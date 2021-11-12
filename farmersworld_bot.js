@@ -144,7 +144,4 @@
             mapBtn.click();
         }
     }
-    // ใครอยากสนับสนุนค่าขนมผม สนับสุนนได้นะครับรับ BNB, BUSD 
-    // address: 0x7D6e59818DcE6a1A911d85Cb43AB04eafD0B6Ab6
-    // wax wallet: osfhs.wam	
 })();
