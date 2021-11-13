@@ -16,11 +16,13 @@
         let result = {};
 
         if (document.getElementsByClassName("image-button close-modal").length > 0) {
+            console.log('close-modal');
             await new Promise((res) => setTimeout(res, 2e3));
             document.getElementsByClassName("image-button close-modal")[0].click()
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
+            console.log('plain-button');
             await new Promise((res) => setTimeout(res, 2e3));
             document.getElementsByClassName("plain-button short undefined")[0].click();
         }
