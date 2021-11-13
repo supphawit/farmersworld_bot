@@ -37,7 +37,7 @@
 
         map.click();
 
-        await new Promise((res) => setTimeout(res, 3e3));
+        await new Promise((res) => setTimeout(res, 2e3));
 
         for (const [indexItem, item] of document
             .querySelectorAll(".vertical-carousel-container img")
@@ -130,7 +130,7 @@
                 // --------------- Energy ---------------
             }
         }
-        mapBtn.click();
+        if (mapId !== 4) mapBtn.click();
     }
 
     await new Promise((res) => setTimeout(res, 1e3));
