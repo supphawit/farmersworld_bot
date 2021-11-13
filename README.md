@@ -8,6 +8,8 @@
 - เข้าเว็บไซต์เกม แล้วกด F12 แล้วเข้าไปที่แท็บ console (ภาพที่2)
 - กด enter เพื่อให้ script ทำงาน
 
+[![Watch the video](https://img.youtube.com/vi/HNSawTnrbMI/default.jpg)](https://www.youtube.com/watch?v=HNSawTnrbMI)
+
 หลังจากรันแล้วต้องทำยังไงต่อบ้าง
 - วิธีสังเกตว่า script ยังทำงานอยู่มั้ยก็คือดูว่าหน้า map ยังถูกกดขึ้นมาอยู่รึเปล่า ถ้าไม่ขึ้นให้ refresh แล้ว copy ไปรันใหม่
 - อย่าปิดแท็บ
