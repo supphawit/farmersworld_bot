@@ -16,11 +16,12 @@
         let result = {};
 
         if (document.getElementsByClassName("image-button close-modal").length > 0) {
+            await new Promise((res) => setTimeout(res, 2e3));
             document.getElementsByClassName("image-button close-modal")[0].click()
-            await new Promise((res) => setTimeout(res, 1e3));
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
+            await new Promise((res) => setTimeout(res, 2e3));
             document.getElementsByClassName("plain-button short undefined")[0].click();
         }
 
@@ -53,13 +54,6 @@
                 const buttonMine = document.getElementsByClassName("button-section set-height")[0]
 
                 if (!buttonMine.children[0].className.includes('disabled')) {
-                    const boxdaylyLimit = [
-                        ...document.querySelectorAll(".info-label"),
-                    ].find((el) => el.innerText.includes("Daily Claim Limit"));
-                    if (boxdaylyLimit) {
-                        const dailyLimit = boxdaylyLimit.querySelector("div").innerText;
-                        if (result[mapId][indexItem] >= dailyLimit) continue;
-                    }
 
                     buttonMine.click();
                     ++result[mapId][indexItem];
@@ -140,6 +134,18 @@
 
     } catch (error) {
         console.log(error);
+        await new Promise((res) => setTimeout(res, 2e3));
+
+        if (document.getElementsByClassName("image-button close-modal").length > 0) {
+            await new Promise((res) => setTimeout(res, 2e3));
+            document.getElementsByClassName("image-button close-modal")[0].click()
+        }
+
+        if (document.getElementsByClassName('plain-button short undefined').length > 0) {
+            await new Promise((res) => setTimeout(res, 2e3));
+            document.getElementsByClassName("plain-button short undefined")[0].click();
+        }
+
         await farmersWolrdBot()
     }
 })();
