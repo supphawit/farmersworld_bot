@@ -1,7 +1,8 @@
 (farmersWolrdBot = async () => {
     // ตัวแปรสำหรับตั้งค่าการเติม energy และ ซ่อมอุปกรณ์
     // หากอยากให้ปิดอันไหนก็ใส่ค่าเป็น 0 เช่นอยากปิดการเติม energy ก็เปลี่ยนค่าเป็น 0 
-    // ตัวอย่าง let autoFillEnergy = 0
+    // ตัวอย่าง
+    // let autoFillEnergy = 0
     let autoFillEnergy = 1
     let autoRepair = 1
 
@@ -24,7 +25,7 @@
     for (let mapId = 0; mapId < 4; ++mapId) {
         if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-        await new Promise((res) => setTimeout(res, 2e3));
+        await new Promise((res) => setTimeout(res, 5e3));
 
         const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -32,7 +33,7 @@
 
         map.click();
 
-        await new Promise((res) => setTimeout(res, 3e3));
+        await new Promise((res) => setTimeout(res, 5e3));
 
         for (const [indexItem, item] of document
             .querySelectorAll(".vertical-carousel-container img")
@@ -57,8 +58,14 @@
 
                 buttonMine.click();
                 ++result[mapId][indexItem];
+                const d = new Date();
+                console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
 
                 await new Promise((res) => setTimeout(res, 5e3));
+
+                if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
+                    document.getElementsByClassName("plain-button short undefined")[0].click();
+                }
 
                 // If map with mining
                 if (mapId === 0) {
