@@ -1,4 +1,5 @@
 (farmersWolrdBot = async () => {
+    console.log('work');
     // ตัวแปรสำหรับตั้งค่าการเติม energy และ ซ่อมอุปกรณ์
     // หากอยากให้ปิดอันไหนก็ใส่ค่าเป็น 0 เช่นอยากปิดการเติม energy ก็เปลี่ยนค่าเป็น 0 
     // ตัวอย่าง
@@ -14,9 +15,13 @@
 
     let result = {};
 
-    if (document.getElementsByClassName("close-modal").length > 0) {
-        document.getElementsByClassName("close-modal")[0].click()
+    if (document.getElementsByClassName("image-button close-modal").length > 0) {
+        document.getElementsByClassName("image-button close-modal")[0].click()
         await new Promise((res) => setTimeout(res, 1e3));
+    }
+
+    if (document.getElementsByClassName('plain-button short undefined').length > 0) {
+        document.getElementsByClassName("plain-button short undefined")[0].click();
     }
 
     const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
@@ -62,10 +67,6 @@
                 console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
 
                 await new Promise((res) => setTimeout(res, 5e3));
-
-                if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
-                    document.getElementsByClassName("plain-button short undefined")[0].click();
-                }
 
                 // If map with mining
                 if (mapId === 0) {
