@@ -4,7 +4,7 @@
 
 
 วิธีใช้:
-- เข้า link แล้ว copy โค้ด [FarmersWolrdBot](https://github.com/supphawit/farmersworld_bot/blob/main/farmersworld_bot.js)
+- เข้า [Link](https://github.com/supphawit/farmersworld_bot/blob/main/farmersworld_bot.js) แล้ว copy โค้ด 
 - เข้าเว็บไซต์เกม แล้วกด F12 แล้วเข้าไปที่แท็บ console (ภาพที่2)
 - กด enter เพื่อให้ script ทำงาน
 
