@@ -29,7 +29,7 @@
     for (let mapId = 0; mapId < 4; ++mapId) {
         if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-        await new Promise((res) => setTimeout(res, 5e3));
+        await new Promise((res) => setTimeout(res, 3e3));
 
         const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -37,7 +37,7 @@
 
         map.click();
 
-        await new Promise((res) => setTimeout(res, 5e3));
+        await new Promise((res) => setTimeout(res, 3e3));
 
         for (const [indexItem, item] of document
             .querySelectorAll(".vertical-carousel-container img")
