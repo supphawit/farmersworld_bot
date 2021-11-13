@@ -8,7 +8,7 @@
 - เข้าเว็บไซต์เกม แล้วกด F12 แล้วเข้าไปที่แท็บ console (ภาพที่2)
 - กด enter เพื่อให้ script ทำงาน
 
-สามารถดูวิธีการใช้งานได้ที่ Youtube นี้เลยครับ ของคุณ [Pongsatorn Triyaluck](https://www.youtube.com/channel/UCrq1QcIv-wRAaHcndns5zYA) 
+สามารถดูวิธีการใช้งานได้ที่ Youtube นี้เลยครับ ของคุณ [Pongsatorn Triyaluck](https://www.youtube.com/channel/UCrq1QcIv-wRAaHcndns5zYA) <br/>
 [![Watch the video](https://img.youtube.com/vi/HNSawTnrbMI/0.jpg)](https://www.youtube.com/watch?v=HNSawTnrbMI)
 
 หลังจากรันแล้วต้องทำยังไงต่อบ้าง
