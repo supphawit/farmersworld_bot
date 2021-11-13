@@ -1,4 +1,7 @@
-# FarmersWorld JavaScript Bot
+# FarmersWorld JavaScript Bot v1.1.0
+
+###### **อัพเดทล่าสุด 13/11/2021 เวลา 15:40 น.**
+
 
 วิธีใช้:
 - เข้า link แล้ว copy โค้ด (ภาพที่1)
