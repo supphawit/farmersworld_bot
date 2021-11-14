@@ -30,7 +30,7 @@
 ---
 ใครอยากสนับสนุนค่าขนม สนับสุนนได้นะครับ 
 <br/>
-BSC Walletรับ BNB, BUSD
+BSC Wallet รับ BNB, BUSD
 ```
 0x7D6e59818DcE6a1A911d85Cb43AB04eafD0B6Ab6
 ```
