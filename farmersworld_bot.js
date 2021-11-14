@@ -1,4 +1,3 @@
-
 let isRunning = false
 async function farmersWolrdBot() {
     try {
@@ -12,7 +11,9 @@ async function farmersWolrdBot() {
         // ซ่อมอุปกรณ์เมื่อถึง 50
         let repairItem = 50
         // เติม energy เมื่อลดเหลือ 200 และ เนื้อ(FWF) มากกว่า 20 เงื่อนไขนี้คู่กัน
-        let energyFill = 200
+        let energyCondition = 200
+        let foodNeed = 20
+        // จำนวนของเนื้อที่จะเติม
         let foodFill = 20
 
         let result = {};
@@ -116,11 +117,11 @@ async function farmersWolrdBot() {
                             +document.querySelectorAll(".resource-number")[2].innerText;
 
 
-                        if (currentEnergy <= energyFill && currentFish >= foodFill) {
+                        if (currentEnergy <= energyCondition && currentFish >= foodNeed) {
                             document.querySelector(".resource-energy img").click();
                             await new Promise((res) => setTimeout(res, 1e3));
 
-                            for (let i = 0; i++ < 20;) {
+                            for (let i = 0; i++ < foodFill;) {
                                 document.querySelector(".image-button[alt='Plus Icon']").click();
                                 await new Promise((res) => setTimeout(res, 5e2));
                             }
