@@ -1,4 +1,5 @@
-(farmersWolrdBot = async () => {
+let isRunning = false
+async function farmersWolrdBot() {
     try {
         // ตัวแปรสำหรับตั้งค่าการเติม energy และ ซ่อมอุปกรณ์
         // หากอยากให้ปิดอันไหนก็ใส่ค่าเป็น 0 เช่นอยากปิดการเติม energy ก็เปลี่ยนค่าเป็น 0 
@@ -37,7 +38,9 @@
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
-            if (map.style.filter === "grayscale(1)") continue;
+            if (map) {
+                if (map.style.filter === "grayscale(1)") continue;
+            }
 
             map.click();
 
@@ -132,7 +135,7 @@
 
         await new Promise((res) => setTimeout(res, 1e3));
         document.getElementsByClassName("navbar-group--icon")[0].click()
-        await farmersWolrdBot()
+        // await farmersWolrdBot()
 
     } catch (error) {
         console.log(error);
@@ -148,6 +151,15 @@
             document.getElementsByClassName("plain-button short undefined")[0].click();
         }
 
-        await farmersWolrdBot()
+        // await farmersWolrdBot()
     }
-})();
+    isRunning = false
+};
+
+setInterval(() => {
+    console.log('stil runing...');
+    if (!isRunning) {
+        isRunning = true
+        farmersWolrdBot()
+    }
+}, 5000);
