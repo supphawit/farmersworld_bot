@@ -35,9 +35,14 @@ async function farmersWolrdBot() {
 
         for (let mapId = 0; mapId < 4; ++mapId) {
 
+            if(document.getElementsByClassName("modal-map-container undefined").length === 0){
+                mapBtn.click();
+                await new Promise((res) => setTimeout(res, 2e3));
+            } 
+
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-            await new Promise((res) => setTimeout(res, 1e3));
+            await new Promise((res) => setTimeout(res, 2e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
