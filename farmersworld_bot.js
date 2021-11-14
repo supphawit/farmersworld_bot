@@ -1,3 +1,4 @@
+
 let isRunning = false
 async function farmersWolrdBot() {
     try {
@@ -23,9 +24,11 @@ async function farmersWolrdBot() {
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
-            console.log('plain-button');
             await new Promise((res) => setTimeout(res, 2e3));
-            document.getElementsByClassName("plain-button short undefined")[0].click();
+            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
+                console.log('plain-button');
+                document.getElementsByClassName("plain-button short undefined")[0].click();
+            }
         }
 
         const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
@@ -135,7 +138,6 @@ async function farmersWolrdBot() {
 
         await new Promise((res) => setTimeout(res, 1e3));
         document.getElementsByClassName("navbar-group--icon")[0].click()
-        // await farmersWolrdBot()
 
     } catch (error) {
         console.log(error);
@@ -148,10 +150,11 @@ async function farmersWolrdBot() {
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
             await new Promise((res) => setTimeout(res, 2e3));
-            document.getElementsByClassName("plain-button short undefined")[0].click();
+            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
+                console.log('plain-button');
+                document.getElementsByClassName("plain-button short undefined")[0].click();
+            }
         }
-
-        // await farmersWolrdBot()
     }
     isRunning = false
 };
@@ -162,4 +165,4 @@ setInterval(() => {
         isRunning = true
         farmersWolrdBot()
     }
-}, 5000);
+}, 2000);
