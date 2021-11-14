@@ -35,11 +35,6 @@ async function farmersWolrdBot() {
 
         for (let mapId = 0; mapId < 4; ++mapId) {
 
-            if(document.getElementsByClassName("modal-map-container undefined").length === 0){
-                mapBtn.click();
-                await new Promise((res) => setTimeout(res, 5e3));
-            }
-
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
             await new Promise((res) => setTimeout(res, 1e3));
@@ -184,5 +179,7 @@ setInterval(() => {
                 document.getElementsByClassName("plain-button short undefined")[0].click();
             }
         }
+
+        if (isRunning) isRunning = false
     }
 }, 2000);
