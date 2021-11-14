@@ -1,6 +1,6 @@
-# FarmersWorld JavaScript Bot v2.0
+# FarmersWorld JavaScript Bot v2.1
 
-###### **อัพเดทล่าสุด 13/11/2021 เวลา 16:16 น.**
+###### **อัพเดทล่าสุด 14/11/2021 เวลา 19:50 น.**
 
 
 วิธีใช้:
