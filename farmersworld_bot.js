@@ -31,24 +31,18 @@ async function farmersWolrdBot() {
         }
 
         const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
-        mapBtn.click();
+        if (document.getElementsByClassName("modal-map-container undefined").length === 0) {
+            mapBtn.click();
+        }
 
         for (let mapId = 0; mapId < 4; ++mapId) {
-
-            if(document.getElementsByClassName("modal-map-container undefined").length === 0){
-                mapBtn.click();
-                await new Promise((res) => setTimeout(res, 2e3));
-            } 
-
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
             await new Promise((res) => setTimeout(res, 2e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
-            if (map) {
-                if (map.style.filter === "grayscale(1)") break;
-            }
+            if (map.style.filter === "grayscale(1)") continue;
 
             console.log('map.click()');
             map.click();
@@ -170,8 +164,8 @@ setInterval(() => {
 
     var diff = Math.abs(start - new Date());
     var second = Math.floor((diff / 1000));
-    // console.log('second:', second);
-    if (second > 150) {
+    if (second > 90) {
+        console.log('second:', second);
         console.log('overtime');
         if (document.getElementsByClassName("image-button close-modal").length > 0) {
             console.log('overtime: close-modal');
@@ -184,7 +178,10 @@ setInterval(() => {
                 document.getElementsByClassName("plain-button short undefined")[0].click();
             }
         }
+    }
 
-        if (isRunning) isRunning = false
+    if (second > 1800 ) {
+        second = 0
+        isRunning = false
     }
 }, 2000);
