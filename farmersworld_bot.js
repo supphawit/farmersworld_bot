@@ -137,9 +137,11 @@ async function farmersWolrdBot() {
         }
 
         await new Promise((res) => setTimeout(res, 1e3));
+        isRunning = false
         document.getElementsByClassName("navbar-group--icon")[0].click()
 
     } catch (error) {
+        isRunning = false
         console.log(error);
         await new Promise((res) => setTimeout(res, 2e3));
 
@@ -162,6 +164,7 @@ async function farmersWolrdBot() {
 setInterval(() => {
     console.log('stil runing...');
     if (!isRunning) {
+        console.log('search...');
         isRunning = true
         farmersWolrdBot()
     }
