@@ -3,8 +3,7 @@ async function farmersWolrdBot() {
     try {
         // ตัวแปรสำหรับตั้งค่าการเติม energy และ ซ่อมอุปกรณ์
         // หากอยากให้ปิดอันไหนก็ใส่ค่าเป็น 0 เช่นอยากปิดการเติม energy ก็เปลี่ยนค่าเป็น 0 
-        // ตัวอย่าง
-        // let autoFillEnergy = 0
+        // ตัวอย่าง let autoFillEnergy = 0
         let autoFillEnergy = 1
         let autoRepair = 1
 
