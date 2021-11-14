@@ -12,8 +12,8 @@ async function farmersWolrdBot() {
         let repairItem = 50
         // เติม energy เมื่อลดเหลือ 200 และ เนื้อ(FWF) มากกว่า 20 เงื่อนไขนี้คู่กัน
         let energyCondition = 200
-        let foodFill = 20
         // จำนวนของเนื้อที่จะเติม
+        let foodFill = 20
 
         let result = {};
 
