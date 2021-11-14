@@ -45,6 +45,7 @@ async function farmersWolrdBot() {
                 if (map.style.filter === "grayscale(1)") continue;
             }
 
+            console.log('map.click()');
             map.click();
 
             await new Promise((res) => setTimeout(res, 4e3));
@@ -55,81 +56,86 @@ async function farmersWolrdBot() {
                 if (typeof result[mapId][indexItem] === "undefined")
                     result[mapId][indexItem] = 0;
 
+                console.log('item.click()');
                 item.click();
 
                 await new Promise((res) => setTimeout(res, 1e3));
 
-                const buttonMine = document.getElementsByClassName("button-section set-height")[0]
-
-                if (!buttonMine.children[0].className.includes('disabled') || ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())) {
-                    buttonMine.click();
-                    ++result[mapId][indexItem];
-                    const d = new Date();
-                    console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
-
-                    await new Promise((res) => setTimeout(res, 5e3));
-
-                    // If map with mining
-                    if (mapId === 0) {
-                        while (
-                            !document.querySelector(".modal__button-group .plain-button")
-                        ) {
-                            await new Promise((res) => setTimeout(res, 5e3));
-                        }
+                let buttonMine = document.getElementsByClassName("button-section set-height")[0]
+                if (buttonMine) {
+                    if (!buttonMine.children[0].className.includes('disabled') || ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())) {
+                        console.log('buttonMine.click()');
+                        buttonMine.click();
+                        ++result[mapId][indexItem];
+                        const d = new Date();
+                        console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
 
                         await new Promise((res) => setTimeout(res, 5e3));
 
-                        document
-                            .querySelector(".modal__button-group .plain-button")
-                            .click();
-
-                        await new Promise((res) => setTimeout(res, 1e3));
-
-                        // --------------- Repair instruments ---------------
-                        if (autoRepair) {
-                            const buttonRepair = document.querySelectorAll(
-                                ".info-section .plain-button"
-                            )[1];
-                            const quality = eval(
-                                document.querySelector(".card-number").innerText
-                            );
-                            if (
-                                ![...buttonRepair.classList].includes("disabled") &&
-                                quality <= (repairItem / 100)
+                        // If map with mining
+                        if (mapId === 0) {
+                            while (
+                                !document.querySelector(".modal__button-group .plain-button")
                             ) {
-                                buttonRepair.click();
-                                await new Promise((res) => setTimeout(res, 1e3));
+                                await new Promise((res) => setTimeout(res, 5e3));
                             }
-                        }
-                        // --------------- Repair instruments ---------------
-                    }
 
-                    await new Promise((res) => setTimeout(res, 1e4));
+                            await new Promise((res) => setTimeout(res, 5e3));
 
-                    // --------------- Energy ---------------	
-                    if (autoFillEnergy) {
-                        const currentEnergy = +document.querySelectorAll(
-                            ".resource-number div"
-                        )[3].innerText;
-                        const currentFish =
-                            +document.querySelectorAll(".resource-number")[2].innerText;
+                            document
+                                .querySelector(".modal__button-group .plain-button")
+                                .click();
 
-
-                        if (currentEnergy <= energyCondition && currentFish >= foodFill) {
-                            document.querySelector(".resource-energy img").click();
                             await new Promise((res) => setTimeout(res, 1e3));
 
-                            for (let i = 0; i++ < foodFill;) {
-                                document.querySelector(".image-button[alt='Plus Icon']").click();
-                                await new Promise((res) => setTimeout(res, 5e2));
+                            // --------------- Repair instruments ---------------
+                            if (autoRepair) {
+                                const buttonRepair = document.querySelectorAll(
+                                    ".info-section .plain-button"
+                                )[1];
+                                const quality = eval(
+                                    document.querySelector(".card-number").innerText
+                                );
+                                if (
+                                    ![...buttonRepair.classList].includes("disabled") &&
+                                    quality <= (repairItem / 100)
+                                ) {
+                                    buttonRepair.click();
+                                    await new Promise((res) => setTimeout(res, 1e3));
+                                }
                             }
-
-                            document.querySelector(".modal-wrapper .plain-button").click();
-
-                            await new Promise((res) => setTimeout(res, 2e4));
+                            // --------------- Repair instruments ---------------
                         }
+
+                        await new Promise((res) => setTimeout(res, 1e4));
+
+                        // --------------- Energy ---------------	
+                        if (autoFillEnergy) {
+                            const currentEnergy = +document.querySelectorAll(
+                                ".resource-number div"
+                            )[3].innerText;
+                            const currentFish =
+                                +document.querySelectorAll(".resource-number")[2].innerText;
+
+
+                            if (currentEnergy <= energyCondition && currentFish >= foodFill) {
+                                console.log('energy click');
+                                document.querySelector(".resource-energy img").click();
+                                await new Promise((res) => setTimeout(res, 1e3));
+
+                                for (let i = 0; i++ < foodFill;) {
+                                    document.querySelector(".image-button[alt='Plus Icon']").click();
+                                    await new Promise((res) => setTimeout(res, 5e2));
+                                }
+
+                                console.log('modal-wrapper click');
+                                document.querySelector(".modal-wrapper .plain-button").click();
+
+                                await new Promise((res) => setTimeout(res, 2e4));
+                            }
+                        }
+                        // --------------- Energy ---------------
                     }
-                    // --------------- Energy ---------------
                 }
             }
             if (mapId !== 4) mapBtn.click();
