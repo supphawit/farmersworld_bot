@@ -12,9 +12,8 @@ async function farmersWolrdBot() {
         let repairItem = 50
         // เติม energy เมื่อลดเหลือ 200 และ เนื้อ(FWF) มากกว่า 20 เงื่อนไขนี้คู่กัน
         let energyCondition = 200
-        let foodNeed = 20
-        // จำนวนของเนื้อที่จะเติม
         let foodFill = 20
+        // จำนวนของเนื้อที่จะเติม
 
         let result = {};
 
@@ -117,7 +116,7 @@ async function farmersWolrdBot() {
                             +document.querySelectorAll(".resource-number")[2].innerText;
 
 
-                        if (currentEnergy <= energyCondition && currentFish >= foodNeed) {
+                        if (currentEnergy <= energyCondition && currentFish >= foodFill) {
                             document.querySelector(".resource-energy img").click();
                             await new Promise((res) => setTimeout(res, 1e3));
 
