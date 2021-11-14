@@ -34,14 +34,20 @@ async function farmersWolrdBot() {
         mapBtn.click();
 
         for (let mapId = 0; mapId < 4; ++mapId) {
+
+            if(document.getElementsByClassName("modal-map-container undefined").length === 0){
+                mapBtn.click();
+                await new Promise((res) => setTimeout(res, 5e3));
+            }
+
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-            await new Promise((res) => setTimeout(res, 2e3));
+            // await new Promise((res) => setTimeout(res, 5e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
             if (map) {
-                if (map.style.filter === "grayscale(1)") continue;
+                if (map.style.filter === "grayscale(1)") break;
             }
 
             console.log('map.click()');
@@ -142,7 +148,7 @@ async function farmersWolrdBot() {
 
         await new Promise((res) => setTimeout(res, 1e3));
         isRunning = false
-        document.getElementsByClassName("navbar-group--icon")[0].click()
+        // document.getElementsByClassName("navbar-group--icon")[0].click()
 
     } catch (error) {
         isRunning = false
@@ -152,11 +158,32 @@ async function farmersWolrdBot() {
     isRunning = false
 };
 
+let start = new Date()
 setInterval(() => {
     console.log('stil runing...');
+
     if (!isRunning) {
         console.log('search...');
+        start = new Date()
         isRunning = true
         farmersWolrdBot()
+    }
+
+    var diff = Math.abs(start - new Date());
+    var second = Math.floor((diff / 1000));
+    console.log('second:', second);
+    if (second > 150) {
+        console.log('overtime');
+        if (document.getElementsByClassName("image-button close-modal").length > 0) {
+            console.log('close-modal');
+            document.getElementsByClassName("image-button close-modal")[0].click()
+        }
+
+        if (document.getElementsByClassName('plain-button short undefined').length > 0) {
+            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
+                console.log('plain-button');
+                document.getElementsByClassName("plain-button short undefined")[0].click();
+            }
+        }
     }
 }, 2000);
