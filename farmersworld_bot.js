@@ -37,7 +37,7 @@ async function farmersWolrdBot() {
         for (let mapId = 0; mapId < 4; ++mapId) {
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-            await new Promise((res) => setTimeout(res, 3e3));
+            await new Promise((res) => setTimeout(res, 2e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -47,7 +47,7 @@ async function farmersWolrdBot() {
 
             map.click();
 
-            await new Promise((res) => setTimeout(res, 2e3));
+            await new Promise((res) => setTimeout(res, 4e3));
 
             for (const [indexItem, item] of document
                 .querySelectorAll(".vertical-carousel-container img")
@@ -61,8 +61,7 @@ async function farmersWolrdBot() {
 
                 const buttonMine = document.getElementsByClassName("button-section set-height")[0]
 
-                if (!buttonMine.children[0].className.includes('disabled')) {
-
+                if (!buttonMine.children[0].className.includes('disabled') || ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())) {
                     buttonMine.click();
                     ++result[mapId][indexItem];
                     const d = new Date();
@@ -144,19 +143,6 @@ async function farmersWolrdBot() {
         isRunning = false
         console.log(error);
         await new Promise((res) => setTimeout(res, 2e3));
-
-        if (document.getElementsByClassName("image-button close-modal").length > 0) {
-            await new Promise((res) => setTimeout(res, 2e3));
-            document.getElementsByClassName("image-button close-modal")[0].click()
-        }
-
-        if (document.getElementsByClassName('plain-button short undefined').length > 0) {
-            await new Promise((res) => setTimeout(res, 2e3));
-            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
-                console.log('plain-button');
-                document.getElementsByClassName("plain-button short undefined")[0].click();
-            }
-        }
     }
     isRunning = false
 };
