@@ -42,7 +42,7 @@ async function farmersWolrdBot() {
 
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-            // await new Promise((res) => setTimeout(res, 5e3));
+            await new Promise((res) => setTimeout(res, 1e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -61,7 +61,6 @@ async function farmersWolrdBot() {
                 if (typeof result[mapId][indexItem] === "undefined")
                     result[mapId][indexItem] = 0;
 
-                console.log('item.click()');
                 item.click();
 
                 await new Promise((res) => setTimeout(res, 1e3));
@@ -171,17 +170,17 @@ setInterval(() => {
 
     var diff = Math.abs(start - new Date());
     var second = Math.floor((diff / 1000));
-    console.log('second:', second);
+    // console.log('second:', second);
     if (second > 150) {
         console.log('overtime');
         if (document.getElementsByClassName("image-button close-modal").length > 0) {
-            console.log('close-modal');
+            console.log('overtime: close-modal');
             document.getElementsByClassName("image-button close-modal")[0].click()
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
             if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
-                console.log('plain-button');
+                console.log('overtime: plain-button');
                 document.getElementsByClassName("plain-button short undefined")[0].click();
             }
         }
