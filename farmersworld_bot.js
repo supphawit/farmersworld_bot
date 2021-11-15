@@ -38,7 +38,7 @@ async function farmersWolrdBot() {
         for (let mapId = 0; mapId < 4; ++mapId) {
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
-            await new Promise((res) => setTimeout(res, 2e3));
+            await new Promise((res) => setTimeout(res, 5e3));
 
             const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -47,17 +47,17 @@ async function farmersWolrdBot() {
             console.log('map.click()');
             map.click();
 
-            await new Promise((res) => setTimeout(res, 4e3));
+            await new Promise((res) => setTimeout(res, 5e3));
 
             for (const [indexItem, item] of document
                 .querySelectorAll(".vertical-carousel-container img")
                 .entries()) {
-                if (typeof result[mapId][indexItem] === "undefined")
+                if (typeof result[mapId][indexItem] === "uandefined")
                     result[mapId][indexItem] = 0;
 
                 item.click();
 
-                await new Promise((res) => setTimeout(res, 1e3));
+                await new Promise((res) => setTimeout(res, 5e3));
 
                 let buttonMine = document.getElementsByClassName("button-section set-height")[0]
                 if (buttonMine) {
@@ -68,7 +68,7 @@ async function farmersWolrdBot() {
                         const d = new Date();
                         console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
 
-                        await new Promise((res) => setTimeout(res, 5e3));
+                        await new Promise((res) => setTimeout(res, 2e3));
 
                         // If map with mining
                         if (mapId === 0) {
@@ -139,14 +139,14 @@ async function farmersWolrdBot() {
             if (mapId !== 4) mapBtn.click();
         }
 
-        await new Promise((res) => setTimeout(res, 1e3));
+        await new Promise((res) => setTimeout(res, 3e3));
         isRunning = false
         // document.getElementsByClassName("navbar-group--icon")[0].click()
 
     } catch (error) {
         isRunning = false
         console.log(error);
-        await new Promise((res) => setTimeout(res, 2e3));
+        await new Promise((res) => setTimeout(res, 3e3));
     }
     isRunning = false
 };
@@ -184,4 +184,4 @@ setInterval(() => {
         second = 0
         isRunning = false
     }
-}, 2000);
+}, 15000);
