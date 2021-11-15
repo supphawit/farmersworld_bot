@@ -152,7 +152,7 @@ async function farmersWolrdBot() {
 };
 
 let start = new Date()
-setInterval(() => {
+setInterval(async () => {
     console.log('stil runing...');
 
     if (!isRunning) {
@@ -170,18 +170,21 @@ setInterval(() => {
         if (document.getElementsByClassName("image-button close-modal").length > 0) {
             console.log('overtime: close-modal');
             document.getElementsByClassName("image-button close-modal")[0].click()
+            await new Promise((res) => setTimeout(res, 15000));
+            second = 0
+            isRunning = false
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
             if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
                 console.log('overtime: plain-button');
                 document.getElementsByClassName("plain-button short undefined")[0].click();
+                await new Promise((res) => setTimeout(res, 15000));
+                second = 0
+                isRunning = false
             }
         }
     }
 
-    if (second > 1800 ) {
-        second = 0
-        isRunning = false
-    }
-}, 20000);
+  
+}, 15000);
