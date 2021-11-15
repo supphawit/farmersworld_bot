@@ -139,6 +139,7 @@ async function farmersWolrdBot() {
                 }
             }
             if (mapId !== 4) mapBtn.click();
+            if (mapId === 4) isMining = false
         }
 
         await new Promise((res) => setTimeout(res, 3e3));
@@ -186,5 +187,9 @@ setInterval(async () => {
         }
     }
 
-
+    if(second > 180){
+        isRunning = false
+        isMining = false
+        second = 0
+    }
 }, 15000);
