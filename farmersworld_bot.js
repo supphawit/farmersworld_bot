@@ -1,4 +1,5 @@
 let isRunning = false
+let isMining = false
 async function farmersWolrdBot() {
     try {
         // ตัวแปรสำหรับตั้งค่าการเติม energy และ ซ่อมอุปกรณ์
@@ -31,11 +32,12 @@ async function farmersWolrdBot() {
         }
 
         const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
-        if (document.getElementsByClassName("modal-map-container undefined").length === 0) {
+        if (document.getElementsByClassName("modal-map-container undefined").length === 0 && !isMining) {
             mapBtn.click();
         }
 
         for (let mapId = 0; mapId < 4; ++mapId) {
+            isMining = true
             if (typeof result[mapId] === "undefined") result[mapId] = {};
 
             await new Promise((res) => setTimeout(res, 5e3));
@@ -171,8 +173,7 @@ setInterval(async () => {
             console.log('overtime: close-modal');
             document.getElementsByClassName("image-button close-modal")[0].click()
             await new Promise((res) => setTimeout(res, 15000));
-            second = 0
-            isRunning = false
+            if (!isMining) isRunning = false
         }
 
         if (document.getElementsByClassName('plain-button short undefined').length > 0) {
@@ -180,11 +181,10 @@ setInterval(async () => {
                 console.log('overtime: plain-button');
                 document.getElementsByClassName("plain-button short undefined")[0].click();
                 await new Promise((res) => setTimeout(res, 15000));
-                second = 0
-                isRunning = false
+                if (!isMining) isRunning = false
             }
         }
     }
 
-  
+
 }, 15000);
