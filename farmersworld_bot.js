@@ -184,4 +184,4 @@ setInterval(() => {
         second = 0
         isRunning = false
     }
-}, 15000);
+}, 20000);
