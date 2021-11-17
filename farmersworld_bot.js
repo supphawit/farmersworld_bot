@@ -55,7 +55,7 @@
 
                 item.click();
 
-                await new Promise((res) => setTimeout(res, 1e3));
+                await new Promise((res) => setTimeout(res, 3e3));
 
                 const buttonMine = document.querySelector(
                     ".info-section .plain-button"
