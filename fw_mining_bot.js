@@ -87,11 +87,11 @@ async function farmersWolrdBot() {
                             +document.querySelectorAll(".resource-number")[2].innerText;
 
                         if (currentEnergy <= energyCondition && currentFish >= foodFill) {
-                            console.log('energy click');
                             document.querySelector(".resource-energy img").click();
                             await new Promise((res) => setTimeout(res, 2e3));
 
                             for (let i = 0; i++ < foodFill;) {
+                                console.log('energy click');
                                 document.querySelector(".image-button[alt='Plus Icon']").click();
                                 await new Promise((res) => setTimeout(res, 5e2));
                             }
@@ -160,4 +160,4 @@ setInterval(async () => {
         isRunning = false
         second = 0
     }
-}, 15000);
+}, 10000);
