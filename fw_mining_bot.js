@@ -129,7 +129,7 @@ setInterval(async () => {
     }
 
     var diff = Math.abs(start - new Date());
-    var second = Math.floor((Math.abs(start - new Date())) / 1000);
+    var second = Math.floor(diff / 1000);
     if (second > 90) {
         console.log('second:', second);
         console.log('overtime');
