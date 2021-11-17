@@ -86,6 +86,7 @@
                                 document.querySelector(".modal-stake .modal-stake-close img")
                             )
                         ) {
+                            console.log('wait');
                             await new Promise((res) => setTimeout(res, 5e3));
                         }
 
@@ -124,11 +125,11 @@
                         )[3].innerText;
                         const currentFish =
                             +document.querySelectorAll(".resource-number")[2].innerText;
-                        if (currentEnergy <= energyCondition && currentFish >= foodFill) {
+                        if (parseFloat(currentEnergy) <= energyCondition && parseFloat(currentFish) >= foodFill) {
                             document.querySelector(".resource-energy img").click();
                             await new Promise((res) => setTimeout(res, 1e3));
 
-                            for (let i = 0; i++ < 20;) {
+                            for (let i = 0; i++ < foodFill;) {
                                 document.querySelector(".image-button[alt='Plus Icon']").click();
                                 await new Promise((res) => setTimeout(res, 5e2));
                             }
