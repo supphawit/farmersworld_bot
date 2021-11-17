@@ -39,15 +39,15 @@ async function farmersWolrdBot() {
 
                     await new Promise((res) => setTimeout(res, 15000));
 
+                    let _time = new Date()
                     // If map with mining
                     while (
                         !(
                             document.querySelector(".modal__button-group .plain-button") ||
                             document.querySelector(".modal-stake .modal-stake-close img")
-                        )
+                        ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
                     ) {
                         await new Promise((res) => setTimeout(res, 5e3));
-
                     }
 
                     await new Promise((res) => setTimeout(res, 5e3));
@@ -129,7 +129,7 @@ setInterval(async () => {
     }
 
     var diff = Math.abs(start - new Date());
-    var second = Math.floor((diff / 1000));
+    var second = Math.floor((Math.abs(start - new Date())) / 1000);
     if (second > 90) {
         console.log('second:', second);
         console.log('overtime');
@@ -160,4 +160,4 @@ setInterval(async () => {
         isRunning = false
         second = 0
     }
-}, 1000);
+}, 15000);
