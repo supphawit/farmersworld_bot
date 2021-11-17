@@ -41,18 +41,6 @@ async function farmersWolrdBot() {
 
                     // If map with mining
                     while (
-                        !document.querySelector(".modal__button-group .plain-button")
-                    ) {
-                        await new Promise((res) => setTimeout(res, 5e3));
-                    }
-
-                    await new Promise((res) => setTimeout(res, 3e3));
-
-                    document
-                        .querySelector(".modal__button-group .plain-button")
-                        .click();
-
-                    while (
                         !(
                             document.querySelector(".modal__button-group .plain-button") ||
                             document.querySelector(".modal-stake .modal-stake-close img")
@@ -97,9 +85,6 @@ async function farmersWolrdBot() {
                         )[3].innerText;
                         let currentFish =
                             +document.querySelectorAll(".resource-number")[2].innerText;
-
-                        console.log('currentEnergy', currentEnergy, 'energyCondition', energyCondition);
-                        console.log('currentFish', currentFish, 'foodFill', foodFill);
 
                         if (currentEnergy <= energyCondition && currentFish >= foodFill) {
                             console.log('energy click');
@@ -175,4 +160,4 @@ setInterval(async () => {
         isRunning = false
         second = 0
     }
-}, 10000);
+}, 1000);
