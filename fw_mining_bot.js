@@ -14,21 +14,6 @@ async function farmersWolrdBot() {
         // จำนวนของเนื้อที่จะเติม
         let foodFill = 20
 
-
-        if (document.getElementsByClassName("image-button close-modal").length > 0) {
-            console.log('close-modal');
-            await new Promise((res) => setTimeout(res, 2e3));
-            document.getElementsByClassName("image-button close-modal")[0].click()
-        }
-
-        if (document.getElementsByClassName('plain-button short undefined').length > 0) {
-            await new Promise((res) => setTimeout(res, 2e3));
-            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
-                console.log('plain-button');
-                document.getElementsByClassName("plain-button short undefined")[0].click();
-            }
-        }
-
         const homeBtn = document.querySelector(".navbar-group--icon[alt='Map']");
         if (document.getElementsByClassName("home-content").length === 0) {
             homeBtn.click();
@@ -42,10 +27,11 @@ async function farmersWolrdBot() {
 
             await new Promise((res) => setTimeout(res, 3e3));
 
-            let buttonMine = document.getElementsByClassName("button-section set-height")[0]
-
+            const buttonMine = document.querySelector(
+                ".info-section .plain-button"
+            );
             if (buttonMine) {
-                if (!buttonMine.children[0].className.includes('disabled') || ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())) {
+                if (![...buttonMine.classList].includes("disabled") || ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())) {
                     console.log('buttonMine.click()');
                     buttonMine.click();
                     const d = new Date();
@@ -66,14 +52,32 @@ async function farmersWolrdBot() {
                         .querySelector(".modal__button-group .plain-button")
                         .click();
 
+                    while (
+                        !(
+                            document.querySelector(".modal__button-group .plain-button") ||
+                            document.querySelector(".modal-stake .modal-stake-close img")
+                        )
+                    ) {
+                        await new Promise((res) => setTimeout(res, 5e3));
+
+                    }
+
+                    await new Promise((res) => setTimeout(res, 5e3));
+
+                    (
+                        document.querySelector(".modal__button-group .plain-button") ||
+                        document.querySelector(".modal-stake .modal-stake-close img")
+                    ).click();
+
+
                     await new Promise((res) => setTimeout(res, 1e3));
 
                     // --------------- Repair instruments ---------------
                     if (autoRepair) {
-                        const buttonRepair = document.querySelectorAll(
+                        let buttonRepair = document.querySelectorAll(
                             ".info-section .plain-button"
                         )[1];
-                        const quality = eval(
+                        let quality = eval(
                             document.querySelector(".card-number").innerText
                         );
                         if (
@@ -88,17 +92,19 @@ async function farmersWolrdBot() {
 
                     // --------------- Energy ---------------	
                     if (autoFillEnergy) {
-                        const currentEnergy = +document.querySelectorAll(
+                        let currentEnergy = +document.querySelectorAll(
                             ".resource-number div"
                         )[3].innerText;
-                        const currentFish =
+                        let currentFish =
                             +document.querySelectorAll(".resource-number")[2].innerText;
 
+                        console.log('currentEnergy', currentEnergy, 'energyCondition', energyCondition);
+                        console.log('currentFish', currentFish, 'foodFill', foodFill);
 
                         if (currentEnergy <= energyCondition && currentFish >= foodFill) {
                             console.log('energy click');
                             document.querySelector(".resource-energy img").click();
-                            await new Promise((res) => setTimeout(res, 1e3));
+                            await new Promise((res) => setTimeout(res, 2e3));
 
                             for (let i = 0; i++ < foodFill;) {
                                 document.querySelector(".image-button[alt='Plus Icon']").click();
@@ -118,8 +124,6 @@ async function farmersWolrdBot() {
 
         await new Promise((res) => setTimeout(res, 2e3));
         isRunning = false
-        // document.getElementsByClassName("navbar-group--icon")[0].click()
-
     } catch (error) {
         isRunning = false
         console.log(error);
@@ -144,20 +148,26 @@ setInterval(async () => {
     if (second > 90) {
         console.log('second:', second);
         console.log('overtime');
-        if (document.getElementsByClassName("image-button close-modal").length > 0) {
-            console.log('overtime: close-modal');
-            document.getElementsByClassName("image-button close-modal")[0].click()
-            await new Promise((res) => setTimeout(res, 15000));
-            isRunning = false
+        while (
+            !(
+                document.querySelector(".modal__button-group .plain-button") ||
+                document.querySelector(".modal-stake .modal-stake-close img")
+            )
+        ) {
+            await new Promise((res) => setTimeout(res, 5e3));
         }
 
-        if (document.getElementsByClassName('plain-button short undefined').length > 0) {
-            if (document.getElementsByClassName('plain-button short undefined')[0].innerText == "OK") {
-                console.log('overtime: plain-button');
-                document.getElementsByClassName("plain-button short undefined")[0].click();
-                await new Promise((res) => setTimeout(res, 15000));
-                isRunning = false
-            }
+        await new Promise((res) => setTimeout(res, 5e3));
+        if (
+            document.querySelector(".modal__button-group .plain-button") ||
+            document.querySelector(".modal-stake .modal-stake-close img")
+        ) {
+            (
+                document.querySelector(".modal__button-group .plain-button") ||
+                document.querySelector(".modal-stake .modal-stake-close img")
+            ).click();
+            isRunning = false
+
         }
     }
 
