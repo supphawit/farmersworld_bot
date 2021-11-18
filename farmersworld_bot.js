@@ -12,30 +12,12 @@
     // จำนวนของเนื้อที่จะเติม
     let foodFill = 20
 
-    // Time to repeat an action for action with error
-    const TIME_TO_RESET = 1 * 60 * 60 * 1000;
-
-    let result = {};
-    let needResetResult = false;
-    setTimeout(() => {
-        needResetResult = true;
-    }, TIME_TO_RESET);
-
     const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
     mapBtn.click();
 
     while (1) {
-        if (needResetResult) {
-            console.log("need reset");
-            result = {};
-            needResetResult = false;
-            setTimeout(() => {
-                needResetResult = true;
-            }, TIME_TO_RESET);
-        }
-
+       
         for (let mapId = 0; mapId < 4; ++mapId) {
-            if (typeof result[mapId] === "undefined") result[mapId] = {};
 
             await new Promise((res) => setTimeout(res, 5e3));
 
@@ -50,9 +32,7 @@
             for (const [indexItem, item] of document
                 .querySelectorAll(".vertical-carousel-container img")
                 .entries()) {
-                if (typeof result[mapId][indexItem] === "undefined")
-                    result[mapId][indexItem] = 0;
-
+         
                 item.click();
 
                 await new Promise((res) => setTimeout(res, 3e3));
@@ -65,40 +45,13 @@
                     ![...buttonMine.classList].includes("disabled") &&
                     ["mine", "claim", "feed", "water"].includes(buttonMine.innerHTML.toLocaleLowerCase())
                 ) {
-                    const boxdaylyLimit = [
-                        ...document.querySelectorAll(".info-label"),
-                    ].find((el) => el.innerText.includes("Daily Claim Limit"));
-                    if (boxdaylyLimit) {
-                        const dailyLimit = boxdaylyLimit.querySelector("div").innerText;
-                        if (result[mapId][indexItem] >= dailyLimit) continue;
-                    }
-
                     buttonMine.click();
-                    ++result[mapId][indexItem];
 
                     await new Promise((res) => setTimeout(res, 1e3));
 
                     // If map with mining
                     if (mapId === 0) {
-                        let _time = new Date()
-                        // If map with mining
-                        while (
-                            !(
-                                document.querySelector(".modal__button-group .plain-button") ||
-                                document.querySelector(".modal-stake .modal-stake-close img")
-                            ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
-                        ) {
-                            await new Promise((res) => setTimeout(res, 5e3));
-                        }
-
-                        await new Promise((res) => setTimeout(res, 5e3));
-
-                        (
-                            document.querySelector(".modal__button-group .plain-button") ||
-                            document.querySelector(".modal-stake .modal-stake-close img")
-                        ).click();
-
-                        await new Promise((res) => setTimeout(res, 1e3));
+                        await new Promise((res) => setTimeout(res, 1e4));
 
                         // Repair instruments
                         if (autoRepair) {
