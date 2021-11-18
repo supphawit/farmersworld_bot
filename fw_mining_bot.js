@@ -107,12 +107,12 @@ async function farmersWolrdBot() {
             }
         }
 
-        await new Promise((res) => setTimeout(res, 2e3));
+        await new Promise((res) => setTimeout(res, 1e3));
         isRunning = false
     } catch (error) {
         isRunning = false
         console.log(error);
-        await new Promise((res) => setTimeout(res, 2e3));
+        await new Promise((res) => setTimeout(res, 1e3));
     }
     isRunning = false
 };
@@ -132,17 +132,17 @@ setInterval(async () => {
     var second = Math.floor(diff / 1000);
     if (second > 90) {
         console.log('second:', second);
-        console.log('overtime');
+        let _time = new Date()
+        // If map with mining
         while (
             !(
                 document.querySelector(".modal__button-group .plain-button") ||
                 document.querySelector(".modal-stake .modal-stake-close img")
-            )
+            ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
         ) {
             await new Promise((res) => setTimeout(res, 5e3));
         }
 
-        await new Promise((res) => setTimeout(res, 5e3));
         if (
             document.querySelector(".modal__button-group .plain-button") ||
             document.querySelector(".modal-stake .modal-stake-close img")
@@ -152,11 +152,11 @@ setInterval(async () => {
                 document.querySelector(".modal-stake .modal-stake-close img")
             ).click();
             isRunning = false
-
         }
     }
 
     if (second > 180) {
+        console.log('overtime');
         isRunning = false
         second = 0
     }
