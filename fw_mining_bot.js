@@ -35,29 +35,8 @@ async function farmersWolrdBot() {
                 buttonMine.click();
                 const d = new Date();
                 console.log("Mine at " + d.getHours() + ":" + d.getMinutes())
-
-                await new Promise((res) => setTimeout(res, 15000));
-
-                let _time = new Date()
-                // If map with mining
-                while (
-                    !(
-                        document.querySelector(".modal__button-group .plain-button") ||
-                        document.querySelector(".modal-stake .modal-stake-close img")
-                    ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
-                ) {
-                    await new Promise((res) => setTimeout(res, 5e3));
-                }
-
-                await new Promise((res) => setTimeout(res, 5e3));
-
-                (
-                    document.querySelector(".modal__button-group .plain-button") ||
-                    document.querySelector(".modal-stake .modal-stake-close img")
-                ).click();
-
-
-                await new Promise((res) => setTimeout(res, 1e3));
+                
+                await new Promise((res) => setTimeout(res, 1e4));
 
                 // --------------- Repair instruments ---------------
                 if (autoRepair) {
@@ -128,32 +107,8 @@ setInterval(async () => {
 
     var diff = Math.abs(start - new Date());
     var second = Math.floor(diff / 1000);
+
     if (second > 90) {
-        console.log('second:', second);
-        let _time = new Date()
-        // If map with mining
-        while (
-            !(
-                document.querySelector(".modal__button-group .plain-button") ||
-                document.querySelector(".modal-stake .modal-stake-close img")
-            ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
-        ) {
-            await new Promise((res) => setTimeout(res, 5e3));
-        }
-
-        if (
-            document.querySelector(".modal__button-group .plain-button") ||
-            document.querySelector(".modal-stake .modal-stake-close img")
-        ) {
-            (
-                document.querySelector(".modal__button-group .plain-button") ||
-                document.querySelector(".modal-stake .modal-stake-close img")
-            ).click();
-            isRunning = false
-        }
-    }
-
-    if (second > 180) {
         console.log('overtime');
         isRunning = false
         second = 0
