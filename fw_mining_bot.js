@@ -14,11 +14,6 @@ async function farmersWolrdBot() {
         // จำนวนของเนื้อที่จะเติม
         let foodFill = 20
 
-        const homeBtn = document.querySelector(".navbar-group--icon[alt='Map']");
-        if (document.getElementsByClassName("home-content").length === 0) {
-            homeBtn.click();
-        }
-
         for (const [indexItem, item] of document
             .querySelectorAll(".vertical-carousel-container img")
             .entries()) {
@@ -113,4 +108,4 @@ setInterval(async () => {
         isRunning = false
         second = 0
     }
-}, 1000);
+}, 10000);
