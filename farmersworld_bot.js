@@ -80,13 +80,14 @@
 
                     // If map with mining
                     if (mapId === 0) {
+                        let _time = new Date()
+                        // If map with mining
                         while (
                             !(
                                 document.querySelector(".modal__button-group .plain-button") ||
                                 document.querySelector(".modal-stake .modal-stake-close img")
-                            )
+                            ) && (Math.floor((Math.abs(_time - new Date())) / 1000) < 20)
                         ) {
-                            console.log('wait');
                             await new Promise((res) => setTimeout(res, 5e3));
                         }
 
