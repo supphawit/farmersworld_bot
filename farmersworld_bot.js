@@ -47,7 +47,12 @@
                 ) {
                     buttonMine.click();
 
-                    await new Promise((res) => setTimeout(res, 1e3));
+                    await new Promise((res) => setTimeout(res, 1e4));
+                    
+                    (
+                      document.querySelector(".modal__button-group .plain-button") ||
+                      document.querySelector(".modal-stake .modal-stake-close img")
+                    ).click();
 
                     // If map with mining
                     if (mapId === 0) {
