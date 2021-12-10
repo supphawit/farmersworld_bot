@@ -33,6 +33,11 @@ async function farmersWolrdBot() {
                 
                 await new Promise((res) => setTimeout(res, 1e4));
 
+                 (
+                   document.querySelector(".modal__button-group .plain-button") ||
+                   document.querySelector(".modal-stake .modal-stake-close img")
+                 ).click();
+                
                 // --------------- Repair instruments ---------------
                 if (autoRepair) {
                     let buttonRepair = document.querySelectorAll(
